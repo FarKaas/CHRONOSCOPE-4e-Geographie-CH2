@@ -1,0 +1,1425 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fiche de Révision – Géo 4e – Ch.2 Les villes dans la mondialisation</title>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --primary: #6366f1;
+    --secondary: #0ea5e9;
+    --success: #10b981;
+    --warning: #f59e0b;
+    --danger: #ef4444;
+    --info: #ec4899;
+    --purple: #413BDD;
+    --bilan: #64748b;
+
+    --bg-white: #ffffff;
+    --bg-light: #f8fafc;
+    --text-dark: #1e293b;
+    --text-muted: #64748b;
+    --text-light: #ffffff;
+
+    --spacing-sm: 12px;
+    --spacing-md: 16px;
+    --spacing-lg: 24px;
+    --spacing-xl: 32px;
+
+    --radius-md: 12px;
+    --radius-lg: 16px;
+
+    --shadow-sm: 0 2px 8px rgba(108, 92, 231, 0.08);
+    --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.4);
+
+    --gradient-primary:      linear-gradient(100deg, var(--primary), #a5b4fc);
+    --gradient-secondary:    linear-gradient(100deg, var(--secondary), #7dd3fc);
+    --gradient-success:      linear-gradient(100deg, var(--success), #6ee7b7);
+    --gradient-warning:      linear-gradient(100deg, var(--warning), #fbbf24);
+    --gradient-danger:       linear-gradient(100deg, var(--danger), #f87171);
+    --gradient-info:         linear-gradient(100deg, var(--info), #f472b6);
+    --gradient-carte:        linear-gradient(100deg, var(--purple), #7490FF);
+    --gradient-bilan:        linear-gradient(100deg, var(--bilan), #9EA9AD);
+    --gradient-carte-mentale:linear-gradient(100deg, #E9AC16, #fbbf24);
+  }
+
+  [data-theme="dark"] {
+    --bg-light: #292929;
+    --bg-white: #3a3a3a;
+    --text-dark: #e8e8e8;
+    --text-muted: #b8b8b8;
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
+    --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.4);
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    font-family: 'Roboto', Arial, sans-serif;
+    margin: 0;
+    padding-top: 80px;
+    background: var(--bg-light);
+    color: var(--text-dark);
+    transition: all 0.3s ease;
+  }
+
+  /* ── Toolbar ── */
+  .toolbar {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    height: 80px;
+    background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+    border-bottom: 2px solid #e9ecef;
+    box-shadow: var(--shadow-md);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    padding: 10px 20px;
+  }
+
+  [data-theme="dark"] .toolbar {
+    background: linear-gradient(135deg, #2e2e2e 0%, #2e2e2e 100%);
+    border-bottom-color: #444444;
+  }
+
+  .toolbar-btn {
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+    transition: transform 0.2s ease;
+  }
+
+  .toolbar-btn:hover { transform: translateY(-2px); }
+
+  .btn-theme { background: linear-gradient(135deg, #74b9ff, #0984e3); }
+  .btn-print { background: linear-gradient(135deg, #4BC01B, #3A9415); }
+  .btn-font  { background: linear-gradient(135deg, #fd79a8, #e84393); }
+
+  /* ── Contenu principal ── */
+  .content {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 30px;
+  }
+
+  /* ── En-tête ── */
+  .chapter-header {
+    text-align: center;
+    margin: 0 auto 40px;
+    padding: 25px;
+    background: linear-gradient(#E6834C, #7362EA);
+    color: white;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(108, 92, 231, 0.3);
+  }
+
+  .theme-title {
+    font-size: 20px;
+    font-weight: 400;
+    opacity: 0.9;
+    margin-bottom: 20px;
+  }
+
+  .chapter-title {
+    margin: 12px 0;
+    font-size: 2em;
+    font-weight: 700;
+    line-height: 1.2;
+  }
+
+  .chapter-number {
+    font-size: 20px;
+    font-weight: 500;
+    opacity: 0.9;
+    margin-top: 2px;
+  }
+
+  /* ── Sections ── */
+  .section {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto var(--spacing-xl);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+  }
+
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-md) var(--spacing-lg);
+    font-size: 1.3em;
+    font-weight: 700;
+    color: var(--text-light);
+  }
+
+  .section-badge {
+    background: rgba(255,255,255,0.25);
+    border: 2px solid rgba(255,255,255,0.35);
+    border-radius: 50%;
+    width: 28px; height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 14px;
+  }
+
+  .cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--spacing-lg);
+    padding: var(--spacing-md) var(--spacing-lg) var(--spacing-lg);
+  }
+
+  .card {
+    background: var(--bg-white);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-lg) var(--spacing-xl);
+    box-shadow: var(--shadow-sm);
+    border: 2px solid;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    min-width: 0;
+    overflow: hidden;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+  }
+
+  .card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 32px rgba(108, 92, 231, 0.15);
+  }
+
+  .list-styled {
+    list-style: none;
+    padding-left: 10px;
+    margin: 0;
+  }
+
+  .list-styled li {
+    position: relative;
+    margin: var(--spacing-md) 0;
+    line-height: 1.5;
+    font-size: 0.95em;
+    padding-left: 35px;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+  }
+
+  .list-styled li::before {
+    content: '●';
+    position: absolute;
+    left: 0; top: 0;
+    font-size: 1em;
+    color: var(--li-color, currentColor);
+  }
+
+  /* ── Problématique ── */
+  .problematique {
+    background: linear-gradient(180deg, #f1efff, #e8e5ff);
+    border-left: 5px solid var(--primary);
+  }
+
+  [data-theme="dark"] .problematique {
+    background: linear-gradient(180deg, #3a3650, #2f2d45);
+  }
+
+  .problematique .section-header { background: var(--gradient-primary); }
+
+  .problematique-content {
+    padding: var(--spacing-md) var(--spacing-lg);
+    border-left: 4px solid var(--primary);
+  }
+
+  .problematique-highlight-box {
+    background: var(--bg-white);
+    border: 2px solid var(--primary);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-md);
+    box-shadow: var(--shadow-md);
+  }
+
+  .problematique-highlight-box h4 {
+    font-size: 1.1em;
+    margin: 0 0 var(--spacing-sm);
+    color: var(--primary);
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+
+  .problematique .list-styled li::before {
+    content: '▶';
+    color: var(--primary);
+  }
+
+  /* ── Plan ── */
+  .plan {
+    background: linear-gradient(180deg, #e6f3ff, #ddeeff);
+    border-left: 5px solid var(--secondary);
+  }
+
+  [data-theme="dark"] .plan {
+    background: linear-gradient(180deg, #2e3950, #242945);
+  }
+
+  .plan .section-header { background: var(--gradient-secondary); }
+
+  .plan-card-header {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .plan-card-icon {
+    width: 28px; height: 28px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    color: var(--text-light);
+    font-size: 1em;
+    box-shadow: var(--shadow-sm);
+    flex-shrink: 0;
+  }
+
+  .plan-card-title {
+    font-size: 1.1em;
+    margin: 0;
+    line-height: 1.5;
+    font-weight: 600;
+    flex-grow: 1;
+  }
+
+  /* ── Compétences ── */
+  .competences {
+    background: linear-gradient(180deg, #e6f6f0, #dff5ec);
+    border-left: 5px solid var(--success);
+  }
+
+  [data-theme="dark"] .competences {
+    background: linear-gradient(180deg, #2e4f40, #243936);
+  }
+
+  .competences .section-header { background: var(--gradient-success); }
+
+  .competences .card { border-color: var(--success); }
+
+  .competences-title {
+    font-weight: 600;
+    margin-bottom: var(--spacing-sm);
+    font-size: 1.1em;
+    color: var(--success);
+    text-transform: uppercase;
+  }
+
+  [data-theme="dark"] .competences-title { color: #6ee7b7; }
+
+  .competences .list-styled li::before { color: var(--success); }
+
+  /* ── Vocabulaire ── */
+  .vocabulaire {
+    background: linear-gradient(180deg, #fef7ed, #fed7aa);
+    border-left: 5px solid var(--warning);
+  }
+
+  [data-theme="dark"] .vocabulaire {
+    background: linear-gradient(180deg, #4d4230, #3d3628);
+  }
+
+  .vocabulaire .section-header { background: var(--gradient-warning); }
+
+  .vocab-category-title {
+    font-weight: 700;
+    color: var(--warning);
+    font-size: 1.1em;
+    margin-bottom: var(--spacing-sm);
+    text-transform: uppercase;
+    text-align: center;
+    padding-bottom: 8px;
+  }
+
+  [data-theme="dark"] .vocab-category-title { color: #fbbf24; }
+
+  /* Couleurs dynamiques – gérées par JS via style inline */
+  .vocab-term {
+    font-weight: 700;
+    text-transform: uppercase;
+    display: inline;
+    margin-right: 8px;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+  }
+
+  .vocab-definition {
+    font-weight: 400;
+    color: var(--text-dark);
+    text-transform: none;
+    display: inline;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    line-height: 1.4;
+  }
+
+  [data-theme="dark"] .vocab-definition { color: #ffffff; }
+
+  /* Onglets vocabulaire – pilules */
+  .vocab-tabs {
+    display: flex;
+    gap: 10px;
+    padding: var(--spacing-lg) var(--spacing-lg) var(--spacing-sm);
+    background: transparent;
+  }
+
+  .vocab-tab-btn {
+    padding: 10px 28px;
+    border: none;
+    border-radius: 999px;
+    background: rgba(245, 158, 11, 0.18);
+    color: var(--warning);
+    font-weight: 600;
+    font-size: 0.92em;
+    cursor: pointer;
+    transition: background 0.25s ease, color 0.25s ease, box-shadow 0.25s ease, transform 0.15s ease;
+    font-family: 'Roboto', Arial, sans-serif;
+    letter-spacing: 0.02em;
+    box-shadow: 0 2px 6px rgba(245, 158, 11, 0.15);
+  }
+
+  .vocab-tab-btn:hover:not(.active) {
+    background: rgba(245, 158, 11, 0.30);
+    box-shadow: 0 3px 10px rgba(245, 158, 11, 0.25);
+    transform: translateY(-1px);
+  }
+
+  .vocab-tab-btn.active {
+    background: var(--gradient-warning);
+    color: white;
+    box-shadow: 0 4px 14px rgba(245, 158, 11, 0.4);
+    transform: translateY(-1px);
+  }
+
+  [data-theme="dark"] .vocab-tab-btn {
+    background: rgba(251, 191, 36, 0.18);
+    color: #fbbf24;
+    box-shadow: 0 2px 6px rgba(251, 191, 36, 0.12);
+  }
+
+  [data-theme="dark"] .vocab-tab-btn:hover:not(.active) {
+    background: rgba(251, 191, 36, 0.30);
+    box-shadow: 0 3px 10px rgba(251, 191, 36, 0.22);
+  }
+
+  [data-theme="dark"] .vocab-tab-btn.active {
+    background: linear-gradient(100deg, #f59e0b, #fbbf24);
+    color: #1e293b;
+    box-shadow: 0 4px 14px rgba(251, 191, 36, 0.35);
+  }
+
+  .vocab-tab-content { display: none; }
+  .vocab-tab-content.active { display: block; }
+
+  /* ── Chiffres clés ── */
+  .chiffres {
+    background: linear-gradient(180deg, #ffe8e8, #ffd6d6);
+    border-left: 5px solid var(--danger);
+  }
+
+  [data-theme="dark"] .chiffres {
+    background: linear-gradient(180deg, #4d3030, #3d2828);
+  }
+
+  .chiffres .section-header { background: var(--gradient-danger); }
+
+  .chiffres-content { padding: var(--spacing-md) var(--spacing-lg); }
+
+  .chiffres-subtitle {
+    margin: var(--spacing-md) 0 var(--spacing-sm) 0;
+    color: var(--text-dark);
+    font-size: 1.1em;
+    font-weight: 600;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--spacing-md);
+    margin: var(--spacing-md) 0;
+  }
+
+  .stat-item {
+    background: var(--bg-white);
+    padding: var(--spacing-md);
+    border-radius: var(--radius-md);
+    border-left: 4px solid var(--danger);
+    box-shadow: var(--shadow-sm);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    margin-bottom: var(--spacing-md);
+    min-width: 0;
+    overflow: hidden;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+  }
+
+  .stat-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 32px rgba(239, 68, 68, 0.15);
+  }
+
+  .stat-number {
+    font-size: 1.2em;
+    font-weight: 700;
+    color: var(--danger);
+    display: block;
+    margin-bottom: 6px;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    line-height: 1.2;
+  }
+
+  [data-theme="dark"] .stat-number { color: #f87171; }
+
+  .stat-label {
+    font-size: 0.85em;
+    color: #666;
+    line-height: 1.4;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+  }
+
+  [data-theme="dark"] .stat-label { color: #b0b0b0; }
+
+  /* ── Études de cas ── */
+  .etudes {
+    background: linear-gradient(180deg, #ffe6f0, #ffcce0);
+    border-left: 5px solid var(--info);
+  }
+
+  [data-theme="dark"] .etudes {
+    background: linear-gradient(180deg, #4d3040, #3d2836);
+  }
+
+  .etudes .section-header { background: var(--gradient-info); }
+
+  .etudes .card { border-color: var(--info); }
+
+  .etudes-title {
+    font-weight: 600;
+    margin-bottom: var(--spacing-sm);
+    font-size: 1.1em;
+    color: var(--info);
+    text-transform: uppercase;
+  }
+
+  [data-theme="dark"] .etudes-title { color: #f472b6; }
+
+  .etudes-content {
+    font-size: 0.95em;
+    color: #555;
+    line-height: 1.5;
+    margin: 0;
+  }
+
+  [data-theme="dark"] .etudes-content { color: #b0b0b0; }
+
+  /* ── Carte ── */
+  .carte {
+    background: linear-gradient(180deg, #e8eaf6, #c5cae9);
+    border-left: 5px solid var(--purple);
+  }
+
+  [data-theme="dark"] .carte {
+    background: linear-gradient(180deg, #24263E, #1e2035);
+  }
+
+  .carte .section-header { background: var(--gradient-carte); }
+
+  .carte-content {
+    padding: var(--spacing-md) var(--spacing-lg) var(--spacing-lg);
+  }
+
+  .carte-content h4 {
+    color: var(--purple);
+    font-size: 1.2em;
+    margin-bottom: var(--spacing-md);
+    font-weight: 600;
+  }
+
+  .carte-map-placeholder {
+    background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+    border: 2px dashed var(--purple);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-xl);
+    text-align: center;
+    margin: var(--spacing-lg) 0;
+  }
+
+  [data-theme="dark"] .carte-map-placeholder {
+    background: linear-gradient(135deg, #3a3a3a, #2a2a2a);
+  }
+
+  .carte-map-icon {
+    font-size: 3em;
+    margin-bottom: var(--spacing-sm);
+    opacity: 0.8;
+  }
+
+  /* ── Bilan ── */
+  .bilan {
+    background: linear-gradient(180deg, #eceff1, #cfd8dc);
+    border-left: 5px solid var(--bilan);
+  }
+
+  [data-theme="dark"] .bilan {
+    background: linear-gradient(180deg, #3a3d40, #2f3235);
+  }
+
+  .bilan .section-header { background: var(--gradient-bilan); }
+
+  .bilan-content {
+    padding: var(--spacing-md) var(--spacing-lg) var(--spacing-lg);
+  }
+
+  .bilan-highlight-box {
+    background: var(--bg-white);
+    border: 2px solid var(--bilan);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-md);
+    margin-top: var(--spacing-lg);
+    box-shadow: var(--shadow-sm);
+  }
+
+  .bilan-highlight-box h4 {
+    margin: 0 0 var(--spacing-sm) 0;
+    color: var(--bilan);
+    font-weight: 600;
+    font-size: 1em;
+  }
+
+  .bilan-highlight-box h5 {
+    margin: var(--spacing-md) 0 var(--spacing-sm) 0;
+    color: var(--bilan);
+    font-weight: 600;
+    font-size: 1em;
+    text-transform: uppercase;
+  }
+
+  /* ── Carte mentale ── */
+  .carte-mentale {
+    background: linear-gradient(180deg, #fefce8, #fef3c7);
+    border-left: 5px solid #E9AC16;
+  }
+
+  [data-theme="dark"] .carte-mentale {
+    background: linear-gradient(180deg, #453f2e, #3a341f);
+  }
+
+  .carte-mentale .section-header { background: var(--gradient-carte-mentale); }
+
+  .carte-mentale-content {
+    padding: var(--spacing-md) var(--spacing-lg) var(--spacing-lg);
+  }
+
+  .carte-mentale-content h4 {
+    color: #E9AC16;
+    font-size: 1.2em;
+    margin-bottom: var(--spacing-md);
+    font-weight: 600;
+  }
+
+  .carte-mentale-placeholder {
+    background: linear-gradient(135deg, #fefce8, #fef3c7);
+    border: 2px dashed #E9AC16;
+    border-radius: var(--radius-md);
+    padding: var(--spacing-xl);
+    text-align: center;
+    margin: var(--spacing-lg) 0;
+    min-height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  [data-theme="dark"] .carte-mentale-placeholder {
+    background: linear-gradient(135deg, #3a3a3a, #2a2a2a);
+  }
+
+  .carte-mentale-icon {
+    font-size: 3em;
+    margin-bottom: var(--spacing-sm);
+    opacity: 0.8;
+    color: #E9AC16;
+  }
+
+  .carte-mentale-subtitle {
+    color: #ca8a04;
+    font-style: italic;
+    margin-top: var(--spacing-sm);
+    font-size: 0.9em;
+  }
+
+  [data-theme="dark"] .carte-mentale-subtitle { color: #fbbf24; }
+
+  /* ── Responsive ── */
+  @media (max-width: 768px) {
+    .content { padding: var(--spacing-md); margin: 15px; }
+    .cards-grid { grid-template-columns: 1fr; gap: var(--spacing-md); }
+    .card { padding: var(--spacing-md) var(--spacing-lg); }
+    .section-header { font-size: 1.1em; padding: var(--spacing-sm) var(--spacing-md); }
+    .chapter-title { font-size: 1.5em; }
+    .stats-grid { grid-template-columns: 1fr; gap: var(--spacing-sm); }
+  }
+
+  @media (max-width: 480px) {
+    body { padding-top: 70px; }
+    .toolbar { height: 70px; padding: 8px 12px; gap: 8px; }
+    .toolbar-btn { padding: 8px 12px; font-size: 12px; }
+    .content { margin: 10px; padding: 15px; }
+    .stats-grid { grid-template-columns: 1fr; }
+    .stat-item { padding: 10px; }
+  }
+
+  /* ── Impression ── */
+  @media print {
+    .toolbar, .vocab-tabs { display: none !important; }
+
+    body {
+      background: white !important;
+      padding-top: 0 !important;
+      font-size: 12pt !important;
+    }
+
+    .section {
+      page-break-inside: avoid;
+      margin-bottom: 15pt !important;
+      box-shadow: none !important;
+    }
+
+    .chapter-header {
+      background: linear-gradient(#E6834C, #7362EA) !important;
+      color: white !important;
+      page-break-inside: avoid;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    .card {
+      background: white !important;
+      border: 1pt solid #ccc !important;
+      page-break-inside: avoid;
+    }
+
+    .section-header {
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    .vocab-tab-content { display: block !important; }
+
+    .vocab-category-title, .competences-title, .acteurs-title, .etudes-title {
+      color: #000 !important;
+      border-bottom: 0.5pt solid #ccc;
+      padding-bottom: 3pt;
+      margin-bottom: 5pt;
+    }
+
+    .vocab-term { color: #000 !important; font-weight: 700 !important; }
+    .vocab-definition { color: #333 !important; }
+
+    .problematique-highlight-box {
+      background: #f5f5f5 !important;
+      border: 0.5pt solid #ccc !important;
+    }
+
+    .bilan-highlight-box {
+      background: #f5f5f5 !important;
+      border: 0.5pt solid #ccc !important;
+    }
+
+    .stats-grid {
+      display: grid !important;
+      grid-template-columns: repeat(3, 1fr) !important;
+      gap: 5pt !important;
+    }
+
+    .stat-item {
+      background: white !important;
+      border-left: 2pt solid var(--danger) !important;
+      padding: 6pt !important;
+      font-size: 9pt !important;
+    }
+
+    .carte-image, .carte-mentale-image {
+      max-width: 100% !important;
+      page-break-inside: avoid;
+    }
+
+    .section.plan, .section.acteurs, .section.carte, .section.bilan, .section.carte-mentale {
+      page-break-before: auto;
+    }
+
+    .list-styled li::before { color: #555 !important; }
+    * { transition: none !important; animation: none !important; }
+  }
+
+  /* ── Notification ── */
+  .notification {
+    position: fixed;
+    top: 20px; right: 20px;
+    z-index: 10000;
+    background: #74b9ff;
+    color: white;
+    padding: 15px 20px;
+    border-radius: 10px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+    animation: slideIn 0.3s ease-out;
+  }
+
+  .notification.success { background: #00b894; }
+  .notification.error   { background: #d63031; }
+
+  @keyframes slideIn {
+    from { opacity: 0; transform: translateX(300px); }
+    to   { opacity: 1; transform: translateX(0); }
+  }
+</style>
+</head>
+
+<body>
+
+<!-- Toolbar -->
+<div class="toolbar">
+  <button class="toolbar-btn btn-theme" onclick="toggleTheme()">🌙 Sombre</button>
+  <button class="toolbar-btn btn-font"  onclick="changeFontSize()">🔠 Taille</button>
+  <button class="toolbar-btn btn-print" onclick="window.print()">🖨️ Imprimer</button>
+</div>
+
+<!-- Contenu principal -->
+<div class="content">
+
+  <!-- EN-TÊTE -->
+  <header class="chapter-header">
+    <div class="theme-title">GÉOGRAPHIE 4e – THÈME 1 : L'URBANISATION DU MONDE</div>
+    <h1 class="chapter-title">LES VILLES DANS LA MONDIALISATION</h1>
+    <div class="chapter-number">CHAPITRE 2</div>
+  </header>
+
+  <!-- PROBLÉMATIQUE -->
+  <section class="section problematique">
+    <div class="section-header">
+      <div class="section-badge">1</div>
+      <span>💡 PROBLÉMATIQUE</span>
+    </div>
+    <div class="problematique-content">
+      <div class="problematique-highlight-box">
+        <h4>🤔 QUESTION CENTRALE DU CHAPITRE</h4>
+        <ul class="list-styled">
+          <li><p><em><strong>[Insérer ici la problématique principale du chapitre sous forme de question]</strong></em></p></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- PLAN – généré dynamiquement -->
+  <section class="section plan">
+    <div class="section-header">
+      <div class="section-badge">2</div>
+      <span>📋 PLAN DU CHAPITRE</span>
+    </div>
+    <div class="cards-grid" id="plan-cards-grid">
+      <!-- Généré par buildPlan() -->
+    </div>
+  </section>
+
+  <!-- COMPÉTENCES – générées dynamiquement -->
+  <section class="section competences">
+    <div class="section-header">
+      <div class="section-badge">3</div>
+      <span>🎯 COMPÉTENCES</span>
+    </div>
+    <div class="cards-grid" id="competences-grid">
+      <!-- Généré par buildCompetences() -->
+    </div>
+  </section>
+
+  <!-- VOCABULAIRE – onglets dynamiques -->
+  <section class="section vocabulaire">
+    <div class="section-header">
+      <div class="section-badge">4</div>
+      <span>📚 VOCABULAIRE</span>
+    </div>
+
+    <div class="vocab-tabs">
+      <button class="vocab-tab-btn active" onclick="switchVocabTab('thematique', this)">🗂️ Par thème</button>
+      <button class="vocab-tab-btn"        onclick="switchVocabTab('parties', this)">📋 Par partie</button>
+    </div>
+
+    <div id="vocab-tab-thematique" class="vocab-tab-content active">
+      <div class="cards-grid" id="vocab-thematique-grid">
+        <!-- Généré par buildVocabThematique() -->
+      </div>
+    </div>
+
+    <div id="vocab-tab-parties" class="vocab-tab-content">
+      <div class="cards-grid" id="vocab-parties-grid">
+        <!-- Généré par buildVocabParties() -->
+      </div>
+    </div>
+  </section>
+
+  <!-- CHIFFRES CLÉS -->
+  <section class="section chiffres">
+    <div class="section-header">
+      <div class="section-badge">5</div>
+      <span>📊 CHIFFRES CLÉS</span>
+    </div>
+    <div class="chiffres-content" id="chiffres-content">
+      <!-- Généré par buildChiffres() -->
+    </div>
+  </section>
+
+  <!-- ÉTUDES DE CAS – générées dynamiquement -->
+  <section class="section etudes">
+    <div class="section-header">
+      <div class="section-badge">6</div>
+      <span>🔍 ÉTUDES DE CAS</span>
+    </div>
+    <div class="cards-grid" id="etudes-grid">
+      <!-- Généré par buildEtudes() -->
+    </div>
+  </section>
+
+  <!-- CARTE DE SYNTHÈSE -->
+  <section class="section carte">
+    <div class="section-header">
+      <div class="section-badge">7</div>
+      <span>🗺️ CARTE DE SYNTHÈSE</span>
+    </div>
+    <div class="carte-content">
+      <h4>La hiérarchie des villes mondiales et les flux de la mondialisation</h4>
+      <div class="carte-map-placeholder">
+        <p style="text-align:center; color:var(--text-muted); padding:40px; background:var(--bg-light); border-radius:8px; border:2px dashed #ccc;">🗺️ Insérer ici la carte de la hiérarchie des villes mondiales<br><small>(ex : carte des villes globales, mondiales et mégalopoles – manuel ou Géoconfluences)</small></p>
+      </div>
+      <p><strong>Source suggérée :</strong> Géoconfluences (ENS Lyon) – <em>La hiérarchie des villes mondiales</em></p>
+    </div>
+  </section>
+
+  <!-- BILAN – généré dynamiquement à partir de PARTIES -->
+  <section class="section bilan">
+    <div class="section-header">
+      <div class="section-badge">8</div>
+      <span>📝 BILAN</span>
+    </div>
+    <div class="bilan-content">
+      <div class="bilan-highlight-box">
+        <h4>Synthèse générale</h4>
+        <div id="bilan-aspects">
+          <!-- Généré par buildBilan() -->
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CARTE MENTALE -->
+  <section class="section carte-mentale">
+    <div class="section-header">
+      <div class="section-badge">9</div>
+      <span>🧠 CARTE MENTALE</span>
+    </div>
+    <div class="carte-mentale-content">
+      <h4>Les villes dans la mondialisation – carte mentale de synthèse</h4>
+      <div class="carte-mentale-placeholder">
+        <p style="text-align:center; color:var(--text-muted); padding:40px; background:var(--bg-light); border-radius:8px; border:2px dashed #ccc;">🧠 Insérer ici la carte mentale du chapitre<br><small>(à réaliser avec les élèves ou via un outil comme Coggle, MindMeister, Canva)</small></p>
+      </div>
+      <p><strong>Pistes :</strong> Coggle.it, MindMeister, Canva – à construire avec les élèves en cours de révision</p>
+    </div>
+  </section>
+
+</div><!-- /content -->
+
+<script>const NB_PARTIES = 2;
+
+const PARTIES = [
+  {
+    "roman": "I",
+    "titre": "LES GRANDES MÉTROPOLES, CENTRES DE COMMANDEMENT DU MONDE",
+    "description": "La mondialisation favorise l'essor de grandes métropoles qui concentrent des fonctions de commandement économiques, politiques et culturelles à l'échelle planétaire. Ces <strong>villes globales</strong> (New York, Londres, Tokyo, Paris) forment un réseau interconnecté structuré par d'importants flux visibles et invisibles, et se regroupent parfois en <strong>mégalopoles</strong>.",
+    "bilan_titre": "Des métropoles au cœur de la mondialisation",
+    "bilan_texte": "La mondialisation a consacré quelques grandes métropoles comme centres de commandement du monde. Les <em>villes globales</em> (New York, Londres, Tokyo, Paris) concentrent les fonctions économiques et financières (CBD, bourses, sièges de FTN), politiques (gouvernements, organisations internationales) et culturelles (musées, universités, pôles de compétitivité). Reliées entre elles par des flux visibles (humains, marchandises) et invisibles (capitaux, informations), elles forment parfois de vastes <em>mégalopoles</em> (nord-américaine, européenne, japonaise) qui constituent les véritables moteurs de l'économie mondiale."
+  },
+  {
+    "roman": "II",
+    "titre": "L'INTÉGRATION INÉGALE DES VILLES DANS LA MONDIALISATION",
+    "description": "La mondialisation met les pays et les villes en concurrence. Si certaines métropoles profitent de leur intégration, d'autres connaissent un déclin économique et démographique : ce sont les <strong>shrinking cities</strong>. Ces villes peuvent cependant se redynamiser par la reconversion économique, la rénovation urbaine ou des projets culturels (effet Bilbao).",
+    "bilan_titre": "Des villes inégalement intégrées",
+    "bilan_texte": "La mondialisation engendre une hiérarchie urbaine mondiale marquée par de fortes inégalités. Les PMA restent marginalisés, leurs métropoles concentrant peu de fonctions de commandement et de flux, ce qui entretient un cercle vicieux de sous-développement. À l'intérieur même des pays développés, certaines villes ont subi la désindustrialisation et sont devenues des <em>shrinking cities</em> (Detroit, Liverpool, Leipzig). Pour y remédier, des stratégies de reconversion (Pittsburgh : IA et robotique), de rénovation urbaine (Rotterdam) ou de projets culturels phares (Bilbao : musée Guggenheim) ont été mises en œuvre, avec des résultats variables."
+  }
+];
+
+const PLAN_COLORS = ['#3b82f6', '#27ae60', '#8e44ad', '#e74c3c'];
+
+const COMPETENCES = [
+  {
+    "emoji": "🗺️",
+    "titre": "SE REPÉRER DANS L'ESPACE",
+    "items": [
+      "Localiser les principales villes globales et mondiales sur un planisphère (New York, Londres, Tokyo, Paris, Shanghai...)",
+      "Identifier les trois grandes mégalopoles mondiales (nord-américaine, européenne, japonaise) et leurs principales métropoles",
+      "Repérer les villes en déclin (shrinking cities) dans les pays développés et les pays marginalisés dans la mondialisation"
+    ]
+  },
+  {
+    "emoji": "🔍",
+    "titre": "ANALYSER ET COMPRENDRE UN DOCUMENT",
+    "items": [
+      "Extraire des informations pertinentes d'un texte, d'une carte ou d'un graphique sur les villes mondiales",
+      "Identifier les fonctions de commandement concentrées dans une métropole à partir d'un document",
+      "Dégager les causes et conséquences de la désindustrialisation à partir d'études de cas (Detroit, Liverpool, Leipzig)"
+    ]
+  },
+  {
+    "emoji": "💭",
+    "titre": "RAISONNER ET JUSTIFIER",
+    "items": [
+      "Expliquer pourquoi certaines villes sont mieux intégrées que d'autres à la mondialisation",
+      "Montrer que la mondialisation crée à la fois des opportunités (villes globales) et des inégalités (villes en déclin)",
+      "Argumenter sur l'efficacité des stratégies de redynamisation (reconversion économique, rénovation urbaine, projets culturels)"
+    ]
+  },
+  {
+    "emoji": "✍️",
+    "titre": "CONSTRUIRE ET RÉDIGER",
+    "items": [
+      "Rédiger un paragraphe argumenté sur le rôle d'une métropole mondiale dans la mondialisation",
+      "Décrire et expliquer un phénomène géographique (shrinking city, effet Bilbao) en utilisant le vocabulaire disciplinaire",
+      "Compléter ou réaliser un croquis de la hiérarchie urbaine mondiale avec une légende organisée"
+    ]
+  }
+];
+
+const VOCAB_THEMATIQUE = [
+  {
+    "emoji": "🏙️",
+    "categorie": "Hiérarchie urbaine mondiale",
+    "termes": [
+      {
+        "terme": "Ville globale",
+        "definition": "Ville de commandement exceptionnel à l'échelle planétaire (New York, Londres, Tokyo, Paris) : nœud stratégique concentrant les fonctions économiques, politiques, culturelles et financières de la mondialisation."
+      },
+      {
+        "terme": "Ville mondiale",
+        "definition": "Grande agglomération qui partage les principales caractéristiques des villes globales, mais qui occupe une position moins centrale dans le réseau mondial (ex : Shanghai, Mumbai, Francfort, Lagos)."
+      },
+      {
+        "terme": "Mégapole",
+        "definition": "Agglomération urbaine de plus de 10 millions d'habitants."
+      },
+      {
+        "terme": "Mégalopole",
+        "definition": "Grande région urbaine formée de plusieurs grandes agglomérations qui se rejoignent et concentrent d'importantes fonctions de commandement. On en compte trois principales : nord-américaine, européenne et japonaise."
+      }
+    ]
+  },
+  {
+    "emoji": "💼",
+    "categorie": "Fonctions économiques et financières",
+    "termes": [
+      {
+        "terme": "Fonctions de commandement",
+        "definition": "Spécialisation d'un espace dans des domaines stratégiques : économie et finance, politique, culture. Les villes globales les concentrent à l'échelle mondiale."
+      },
+      {
+        "terme": "CBD (Central Business District)",
+        "definition": "Quartier central des affaires d'une métropole, concentrant les sièges de grandes entreprises, les banques et les services aux entreprises (ex : La Défense à Paris, la City à Londres, Pudong à Shanghai)."
+      },
+      {
+        "terme": "FTN (Firme Transnationale)",
+        "definition": "Entreprise d'une certaine taille présente simultanément dans plusieurs pays grâce à des filiales à l'étranger. On en compte 82 000 dans le monde avec 815 000 filiales."
+      },
+      {
+        "terme": "Pôle de compétitivité",
+        "definition": "Concentration sur un territoire d'universités, de centres de recherche et d'industries de pointe formant un écosystème d'innovation (ex : Silicon Valley, Paris-Saclay, Shenzhen)."
+      }
+    ]
+  },
+  {
+    "emoji": "🔗",
+    "categorie": "Connexions et flux",
+    "termes": [
+      {
+        "terme": "Flux visibles",
+        "definition": "Déplacements de personnes (migrations, tourisme) et de marchandises entre les villes mondiales."
+      },
+      {
+        "terme": "Flux invisibles",
+        "definition": "Transferts immatériels entre les métropoles : capitaux financiers et informations circulant via câbles sous-marins (internet) et satellites."
+      },
+      {
+        "terme": "Nœud",
+        "definition": "Infrastructure de transport (aéroport, port, gare) qui structure les réseaux d'échanges mondiaux en concentrant et redistribuant les flux."
+      }
+    ]
+  },
+  {
+    "emoji": "📉",
+    "categorie": "Inégalités et déclin urbain",
+    "termes": [
+      {
+        "terme": "Shrinking city (ville qui rétrécit)",
+        "definition": "Ville touchée par un rétrécissement urbain sur trois plans : démographique (perte de population), économique (perte d'emplois et d'activités) et social (chômage, pauvreté, insécurité). Phénomène lié à la désindustrialisation."
+      },
+      {
+        "terme": "Désindustrialisation",
+        "definition": "Déclin du secteur industriel dans une ville ou une région, entraînant pertes d'emplois et déprise économique (ex : fermeture des usines automobiles à Detroit, sidérurgie à Leipzig)."
+      },
+      {
+        "terme": "Friche industrielle",
+        "definition": "Espace laissé à l'abandon après la fermeture d'une usine ou d'un site industriel ; souvent le symbole visible de la désindustrialisation."
+      },
+      {
+        "terme": "Effet Bilbao",
+        "definition": "Phénomène par lequel la construction d'un équipement culturel majeur (musée Guggenheim de Bilbao, 1997) redynamise l'économie d'une ville en déclin grâce au tourisme et à la rénovation urbaine."
+      }
+    ]
+  }
+];
+
+const VOCAB_PAR_PARTIES = [
+  {
+    "termes": [
+      {
+        "terme": "Ville globale",
+        "definition": "Métropole de commandement exceptionnel à l'échelle planétaire (New York, Londres, Tokyo, Paris)."
+      },
+      {
+        "terme": "Ville mondiale",
+        "definition": "Grande agglomération bien intégrée à la mondialisation, mais à un rang inférieur aux villes globales."
+      },
+      {
+        "terme": "CBD",
+        "definition": "Central Business District : quartier d'affaires concentrant les activités économiques et financières d'une métropole."
+      },
+      {
+        "terme": "FTN",
+        "definition": "Firme Transnationale : entreprise implantée dans plusieurs pays via des filiales (82 000 dans le monde)."
+      },
+      {
+        "terme": "Mégalopole",
+        "definition": "Grande région urbaine formée de plusieurs agglomérations reliées entre elles, concentrant d'importants flux et fonctions de commandement."
+      },
+      {
+        "terme": "Nœud",
+        "definition": "Infrastructure structurant les réseaux d'échanges mondiaux (aéroport, port, gare)."
+      }
+    ]
+  },
+  {
+    "termes": [
+      {
+        "terme": "Shrinking city",
+        "definition": "Ville en décroissance démographique, économique et sociale, souvent liée à la désindustrialisation."
+      },
+      {
+        "terme": "Désindustrialisation",
+        "definition": "Déclin du secteur industriel entraînant chômage et déprise économique."
+      },
+      {
+        "terme": "Friche industrielle",
+        "definition": "Site industriel abandonné, vestige visible de la désindustrialisation."
+      },
+      {
+        "terme": "Effet Bilbao",
+        "definition": "Redynamisation d'une ville en déclin par un projet culturel majeur attirant touristes et investissements."
+      },
+      {
+        "terme": "Rénovation urbaine",
+        "definition": "Ensemble de travaux visant à moderniser les infrastructures et améliorer le cadre de vie d'une ville."
+      },
+      {
+        "terme": "PMA",
+        "definition": "Pays les Moins Avancés : pays marginalisés dans la mondialisation, dont les métropoles concentrent peu de fonctions de commandement."
+      }
+    ]
+  }
+];
+
+const CHIFFRES = [
+  {
+    "emoji": "🌐",
+    "titre": "FIRMES TRANSNATIONALES (FTN)",
+    "stats": [
+      {
+        "nombre": "82 000",
+        "label": "FTN dans le monde (contre 6 000 en 1967)"
+      },
+      {
+        "nombre": "815 000",
+        "label": "filiales de FTN à l'étranger (contre 27 000 en 1967)"
+      },
+      {
+        "nombre": "+1/4",
+        "label": "du PIB mondial réalisé par les FTN"
+      }
+    ]
+  },
+  {
+    "emoji": "🏙️",
+    "titre": "VILLES GLOBALES ET MÉGALOPOLES",
+    "stats": [
+      {
+        "nombre": "4",
+        "label": "villes globales de 1er rang : New York, Londres, Tokyo, Paris"
+      },
+      {
+        "nombre": "3",
+        "label": "mégalopoles principales : nord-américaine, européenne, japonaise"
+      },
+      {
+        "nombre": "1 million",
+        "label": "de visiteurs dès la 1ère année au Guggenheim de Bilbao (1997)"
+      }
+    ]
+  },
+  {
+    "emoji": "📉",
+    "titre": "VILLES EN DÉCLIN (SHRINKING CITIES)",
+    "stats": [
+      {
+        "nombre": "90 000",
+        "label": "emplois manufacturiers supprimés à Leipzig en 7 ans (1989-1996), soit -90 %"
+      },
+      {
+        "nombre": "25 %",
+        "label": "de chômage dans certaines zones de Merseyside (Liverpool) après désindustrialisation"
+      },
+      {
+        "nombre": "2013",
+        "label": "année de la faillite de Detroit, plus grande ville américaine en cessation de paiement"
+      }
+    ]
+  }
+];
+
+const ETUDES = [
+  {
+    "titre": "🗽 New York & Londres – Villes globales de 1er rang",
+    "description": "New York et Londres illustrent les caractéristiques des villes globales : elles dominent les classements en économie (Wall Street / NYSE, City de Londres), en recherche et développement, et en accessibilité internationale. Chacune accueille des organisations internationales majeures (ONU à New York) et concentre des sièges de grandes FTN. Leur CBD (Manhattan, City) en est le symbole le plus visible."
+  },
+  {
+    "titre": "🚗 Detroit (États-Unis) – La shrinking city emblématique",
+    "description": "Berceau de l'industrie automobile américaine (Ford, General Motors), Detroit a déclaré faillite en 2013, devenant la plus grande ville américaine en cessation de paiement. La désindustrialisation a provoqué une perte massive d'emplois, un exode de population (de 1,8 million d'habitants en 1950 à moins de 700 000 aujourd'hui) et une montée de la criminalité. Depuis les années 2010, la ville se redynamise autour du véhicule électrique et du tourisme culturel (Detroit Institute of Arts, Motown)."
+  },
+  {
+    "titre": "🎨 Bilbao (Espagne) – L'effet Bilbao",
+    "description": "Ancienne ville industrielle basque en déclin, Bilbao a choisi la culture comme levier de reconversion. L'ouverture du musée Guggenheim en 1997 (architecte Frank Gehry, coût : 100 M$) a attiré 1 million de visiteurs dès la première année (contre 400 000 escomptés), remboursant l'investissement en 5 ans. Ce succès a transformé la ville et donné naissance au concept d'effet Bilbao : un modèle de régénération urbaine par la culture, difficile à reproduire ailleurs."
+  },
+  {
+    "titre": "🤖 Pittsburgh (États-Unis) – La reconversion réussie",
+    "description": "Ancienne capitale mondiale de l'acier, Pittsburgh a perdu plus de 150 000 emplois manufacturiers et 176 000 habitants dans les années 1980. La ville s'est réinventée grâce à ses universités (Carnegie Mellon, University of Pittsburgh), devenant un pôle mondial de l'IA, de la robotique et de la santé. Entre 2010 et 2015, la productivité des travailleurs a bondi de 10 %, le salaire moyen de 9 % et le niveau de vie de 13 %."
+  },
+  {
+    "titre": "🚢 Rotterdam (Pays-Bas) – Rénovation urbaine et modernité architecturale",
+    "description": "Détruite par les bombardements allemands du 14 mai 1940, Rotterdam a choisi de reconstruire son centre-ville en rupture totale avec le passé, en appliquant des principes de planification fonctionnelle moderne. La ville est devenue un laboratoire d'architecture contemporaine : Cube Houses, et le Markthal (2014) premier marché alimentaire couvert des Pays-Bas. Premier port d'Europe, Rotterdam illustre comment une ville peut transformer un traumatisme en opportunité de renouvellement urbain."
+  }
+];
+
+
+function buildPlan() {
+  const grid = document.getElementById('plan-cards-grid');
+  if (!grid) return;
+  grid.innerHTML = '';
+  const n = Math.min(NB_PARTIES, PARTIES.length);
+  for (let i = 0; i < n; i++) {
+    const p = PARTIES[i];
+    const color = PLAN_COLORS[i];
+    const card = document.createElement('div');
+    card.className = 'card';
+    card.style.borderColor = color;
+    card.innerHTML = `
+      <div class="plan-card-header">
+        <div class="plan-card-icon" style="background:${color}">${p.roman}</div>
+        <h3 class="plan-card-title" style="color:${color}">${p.titre}</h3>
+      </div>
+      <div class="plan-card-content"><p>${p.description}</p></div>`;
+    grid.appendChild(card);
+  }
+}
+
+function buildBilan() {
+  const container = document.getElementById('bilan-aspects');
+  if (!container) return;
+  container.innerHTML = '';
+  const n = Math.min(NB_PARTIES, PARTIES.length);
+  for (let i = 0; i < n; i++) {
+    const p = PARTIES[i];
+    container.innerHTML += `<h5>${p.bilan_titre}</h5><p>${p.bilan_texte}</p>`;
+  }
+}
+
+function buildCompetences() {
+  const grid = document.getElementById('competences-grid');
+  if (!grid) return;
+  grid.innerHTML = '';
+  COMPETENCES.forEach(cat => {
+    const card = document.createElement('div');
+    card.className = 'card';
+    const items = cat.items.map(i => `<li>${i}</li>`).join('');
+    card.innerHTML = `
+      <div class="competences-title">${cat.emoji} ${cat.titre}</div>
+      <ul class="list-styled">${items}</ul>`;
+    grid.appendChild(card);
+  });
+}
+
+function buildVocabThematique() {
+  const grid = document.getElementById('vocab-thematique-grid');
+  if (!grid) return;
+  grid.innerHTML = '';
+  const vocabColors = ['#3b82f6', '#27ae60', '#8e44ad', '#e74c3c', '#f39c12'];
+  VOCAB_THEMATIQUE.forEach((cat, idx) => {
+    const color = vocabColors[idx % vocabColors.length];
+    const card = document.createElement('div');
+    card.className = 'card';
+    card.style.borderColor = color;
+    const items = cat.termes.map(t =>
+      `<li style="--li-color:${color}">
+        <span class="vocab-term" style="color:${color}">${t.terme} :</span>
+        <span class="vocab-definition">${t.definition}</span>
+      </li>`
+    ).join('');
+    card.innerHTML = `
+      <div class="vocab-category-title" style="color:${color}">${cat.emoji} ${cat.categorie}</div>
+      <ul class="list-styled">${items}</ul>`;
+    grid.appendChild(card);
+  });
+}
+
+function buildVocabParties() {
+  const grid = document.getElementById('vocab-parties-grid');
+  if (!grid) return;
+  grid.innerHTML = '';
+  const n = Math.min(NB_PARTIES, PARTIES.length, VOCAB_PAR_PARTIES.length);
+  for (let i = 0; i < n; i++) {
+    const partie = PARTIES[i];
+    const vocab  = VOCAB_PAR_PARTIES[i];
+    const color  = PLAN_COLORS[i];
+    const card = document.createElement('div');
+    card.className = 'card';
+    card.style.borderColor = color;
+    const items = vocab.termes.map(t =>
+      `<li style="--li-color:${color}">
+        <span class="vocab-term" style="color:${color}">${t.terme} :</span>
+        <span class="vocab-definition">${t.definition}</span>
+      </li>`
+    ).join('');
+    card.innerHTML = `
+      <div class="vocab-category-title" style="color:${color}">${partie.roman} — ${partie.titre}</div>
+      <ul class="list-styled">${items}</ul>`;
+    grid.appendChild(card);
+  }
+}
+
+function switchVocabTab(tab, btn) {
+  document.querySelectorAll('.vocab-tab-content').forEach(el => el.classList.remove('active'));
+  document.querySelectorAll('.vocab-tab-btn').forEach(el => el.classList.remove('active'));
+  document.getElementById('vocab-tab-' + tab).classList.add('active');
+  btn.classList.add('active');
+}
+
+function buildChiffres() {
+  const container = document.getElementById('chiffres-content');
+  if (!container) return;
+  container.innerHTML = '';
+  CHIFFRES.forEach(echelle => {
+    const items = echelle.stats.map(s =>
+      `<div class="stat-item">
+        <span class="stat-number">${s.nombre}</span>
+        <span class="stat-label">${s.label}</span>
+      </div>`
+    ).join('');
+    container.innerHTML += `
+      <h4 class="chiffres-subtitle">${echelle.emoji} ${echelle.titre}</h4>
+      <div class="stats-grid">${items}</div>`;
+  });
+}
+
+function buildEtudes() {
+  const grid = document.getElementById('etudes-grid');
+  if (!grid) return;
+  grid.innerHTML = '';
+  ETUDES.forEach(e => {
+    const card = document.createElement('div');
+    card.className = 'card';
+    card.innerHTML = `
+      <div class="etudes-title">${e.titre}</div>
+      <div class="etudes-content">${e.description}</div>`;
+    grid.appendChild(card);
+  });
+}
+
+// =============================================================
+// UI – Thème sombre / taille de police / notification
+// =============================================================
+let isDarkTheme   = false;
+let currentFontSize = 16;
+
+function toggleTheme() {
+  isDarkTheme = !isDarkTheme;
+  document.body.dataset.theme = isDarkTheme ? 'dark' : '';
+  const btn = document.querySelector('.btn-theme');
+  btn.textContent = isDarkTheme ? '☀️ Clair' : '🌙 Sombre';
+  showNotification(isDarkTheme ? 'Mode sombre activé' : 'Mode clair activé');
+}
+
+function changeFontSize() {
+  const sizes = [14, 16, 18, 20, 22];
+  const names = ['Petit', 'Normal', 'Grand', 'Très grand', 'Extra grand'];
+  const currentIndex = sizes.indexOf(currentFontSize);
+  const nextIndex    = (currentIndex + 1) % sizes.length;
+  currentFontSize    = sizes[nextIndex];
+  document.body.style.fontSize = currentFontSize + 'px';
+  showNotification(`Taille : ${names[nextIndex]}`);
+}
+
+function showNotification(message) {
+  const existing = document.querySelector('.notification');
+  if (existing) existing.remove();
+  const n = document.createElement('div');
+  n.className   = 'notification';
+  n.textContent = message;
+  document.body.appendChild(n);
+  setTimeout(() => {
+    n.style.animation = 'slideIn 0.3s ease-in reverse';
+    setTimeout(() => n.remove(), 300);
+  }, 2000);
+}
+
+// =============================================================
+// INITIALISATION
+// =============================================================
+document.addEventListener('DOMContentLoaded', () => {
+  buildPlan();
+  buildBilan();
+  buildCompetences();
+  buildVocabThematique();
+  buildVocabParties();
+  buildChiffres();
+  buildEtudes();
+  console.log(`🌍 Fiche Géographie chargée — ${NB_PARTIES} partie(s)`);
+});
+</script>
+</body>
+</html>
